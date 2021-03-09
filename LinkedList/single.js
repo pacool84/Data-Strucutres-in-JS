@@ -1,4 +1,4 @@
-let singlyLinkedList = {
+/* let singlyLinkedList = {
   value: 1,
   next: {
     value: 2,
@@ -10,7 +10,7 @@ let singlyLinkedList = {
       },
     },
   },
-};
+}; */
 
 class Node {
   constructor(value) {
@@ -28,6 +28,37 @@ class MySinglyLinkedList {
     this.tail = this.head;
     this.length = 1;
   }
+  append(value) {
+    const newNode = new Node(value);
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+
+    return this;
+  }
+
+  prepend(value) {
+    const newNode = new Node(value);
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+
+    return this;
+  }
 }
 
-let MyLinkedList = new MySinglyLinkedList(1);
+let myLinkedList = new MySinglyLinkedList(1);
+
+console.log(myLinkedList);
+
+myLinkedList.append(2);
+
+console.log(myLinkedList);
+
+myLinkedList.append(3);
+
+console.log(myLinkedList);
+
+myLinkedList.prepend(0);
+
+console.log("Se agrega una nueva cabeza con PREPEND", myLinkedList);
